@@ -15,7 +15,7 @@ local Time = Config.time
      print("\n\r[".. GetCurrentResourceName() .."] Set time in config between 1000 or 15000, default time set of 5000")
     end 
 -- Don't touch
-resourcename = "HXVRMXN's SafeZones'"
+resourcename = "HXVRMXN's SafeZones"
 version = "1.0.0"
 rawVersionLink = "https://pastebin.com/raw/hqENzbbv"
 
