@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Axon Camera By RCPisAwesome</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+	<link rel="stylesheet" href="https://use.typekit.net/fpa1hmo.css">
+	<link href="https://www.rcpisawesome.co.uk/dev/RCPMenu.css" rel="stylesheet">
+	<script>
+		Date.prototype.stdTimezoneOffset = function () {
+		    var jan = new Date(this.getFullYear(), 0, 1);
+		    var jul = new Date(this.getFullYear(), 6, 1);
+		    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset());
+		}
+		Date.prototype.isDstObserved = function () {
+		    return this.getTimezoneOffset() < this.stdTimezoneOffset();
+		}
+		var beep = new Howl({src: ["https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/beep.wav"]});
+		beep.volume(0.01);
+		var togglevolume = true,togglebackground = true,togglethirdperson = true,togglepower = true,toggletimeoffest = true,toggle2minbeeps = true,twominbeep = true,toggleweapon = false,uienabled = false;
+		var offset = 0, setoffset = 0, utc = true, daylightsavings = "YES";
+		var s = "";
+		var keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		for ( var i = 0; i < 4; i++ ) {
+		   s += keys.charAt(Math.floor(Math.random() * (keys.length)));
+		}
+		var serial = "6039"+s;
+		updateClock();
+
+		function updateClock() {
+			if (utc){
+				var timedate = new Date();
+				var utcdisplay = "+0000";
+			}else{
+				var today = new Date();
+				today.setTime(today.getTime()+today.getTimezoneOffset()*60*1000);
+				if ((daylightsavings == "YES") && (today.isDstObserved())){ 
+					setoffset = offset + 1; //daylight savings in on
+				}else{
+					setoffset = offset;
+				}
+				var timedate = new Date(today.getTime()+(setoffset*60*60*1000));//milliseconds to seconds to minutes to hours
+				var utcdisplay = $(".timezone[title='"+offset+"']").html().toString();
+			}
+			var newtoday = timedate.toISOString();
+			var date = newtoday.substring(0, 10);
+			var time = newtoday.substring(10, 19);
+			$("#date").text(date+" "+time+" "+utcdisplay);
+			setTimeout(updateClock, 1000);
+		}
+		function volumeChange(vol) {
+			beep.volume(vol/100);
+			beep.play();
+		}
+		$(function() {
+			var location = window.location.href;
+			var directoryPath = location.substring(6, location.lastIndexOf("/")+1);
+			window.addEventListener('message', function(event){
+				if (event.data.ShowUI){
+					if(uienabled){
+						$("#ui").css('display', event.data.ShowUI ? "block" : "none");
+					}
+				}
+				if (event.data.HideUI){
+					$("#ui").css('display', "none");
+				}
+				if (event.data.weapon){
+					if (uienabled && toggleweapon){
+						$("#ui").css("display","block");
+						beep.play();
+					}
+				}
+				if (event.data.ShowPowerButton){
+					togglepower = true;
+					toggleweapon = false;
+					$("#ui").hide();
+					$("#togglepower").css('display', event.data.ShowPowerButton ? "block" : "none");
+					if (twominbeep){
+						toggle2minbeeps = true;
+						clearInterval(twominbeep);
+					}
+					$("button").css({"background-color":"rgb(151,66,66)"});
+				}
+			});
+			$(window).keydown(function(e){
+				if (!(((e.keyCode >= 48)&&(e.keyCode <= 57))||((e.keyCode >= 96)&&(e.keyCode <= 105))||(e.keyCode==13)||(e.keyCode==8)||(e.keyCode==46))){/*0123456789,numpad 0123456789,enter,backspace,delete*/
+					$.post("http://"+directoryPath+"close");
+					$(".toggle").hide();
+					$(".timezone").hide();
+					$(".volume").hide();
+					$(".daylightsavings").hide();
+				}
+			});
+			$("#text").text("AXON BODY 3 X"+serial);
+			$('#volume').on("input propertychange change click",function(){
+				var vol = $(this).val().toString();
+				$("#volumeinput").val(vol);
+				volumeChange(vol);
+			});
+			$('#volumeinput').on("input",function(){
+				var vol = $(this).val().toString();
+				$("#volume").val(vol);
+				volumeChange(vol);
+			});
+			$("button").click(function(){
+				$(".volume").hide();
+				$(".daylightsavings").hide();
+				$(".timezone").hide();
+				$("#toggletimeoffest").css({"background-color":"rgb(151,66,66)"});
+				$("#togglevolume").css({"background-color":"rgb(151,66,66)"});
+
+				if (this.id == "togglepower"){
+					if (twominbeep){
+						toggle2minbeeps = true;
+						clearInterval(twominbeep);
+					}
+					if (togglepower){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						beep.play();
+						$("#ui").show();
+						uienabled = true;
+						$(".toggle").show();
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						$("#ui").hide();
+						uienabled = false;
+					}
+					togglepower = !togglepower;
+				}else if (this.id == "toggletimeoffest"){
+					if (toggletimeoffest){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						$(".daylightsavings").show();
+						$(".timezone").show();
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						$(".daylightsavings").hide();
+						$(".timezone").hide();
+					}
+					toggletimeoffest = !toggletimeoffest;
+					$("#togglevolume").css({"background-color":"rgb(151,66,66)"});
+					$(".volume").hide();
+					togglevolume = true;
+				}else if (this.id == "togglevolume"){
+					if (togglevolume){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						$(".volume").show();
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						$(".volume").hide();
+					}
+					$("#toggletimeoffest").css({"background-color":"rgb(151,66,66)"});
+					$(".daylightsavings").hide();
+					$(".timezone").hide();
+					toggletimeoffest = true;
+				}else if (this.id == "togglebackground"){
+					if (togglebackground){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						$("svg").show();
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						$("svg").hide();
+					}
+					togglebackground = !togglebackground;
+				}else if (this.id == "togglethirdperson"){
+					$.post('http://'+directoryPath+"togglethirdperson");
+					if (togglethirdperson){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+					}
+					togglethirdperson = !togglethirdperson;
+				}else if (this.id == "toggle2minbeeps"){
+					if(toggle2minbeeps){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						twominbeep = setInterval(function(){
+							beep.play();
+						},120000);
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						clearInterval(twominbeep);
+					}
+					toggle2minbeeps = !toggle2minbeeps;
+				}else if (this.id == "toggleweapon"){
+					if (!toggleweapon){
+						$(this).css({"background-color":"rgb(66,151,66)"});
+						toggleweapon = true;
+					}else{
+						$(this).css({"background-color":"rgb(151,66,66)"});
+						toggleweapon = false;
+					}
+				}else if ($(this).hasClass("timezone")){
+					$(".timezone").css({"background-color":"rgb(151,66,66)"});
+					$(this).css({"background-color":"rgb(66,151,66)"});
+					if (this.id == "UTC"){
+						utc = true;
+					}else{
+						utc = false;
+						offset = parseFloat($(this).attr("title"));
+						daylightsavings = $("#daylightsavings :selected").text();
+					}
+				}
+			});
+		});
+	</script>
+	<style>
+		body{
+			overflow: hidden;
+		}
+		p,button,div,svg,img,input,select{
+			position: absolute;
+		}
+		p,button{
+			color: rgb(255,255,255);
+			font-size: 1.2vw;
+			text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+			font-family: motor, monospace;
+			font-weight: 600;
+			font-style: normal;
+		}
+		p{
+			text-align: left;
+		}
+		button{
+			background-color: #974242;
+			text-align: center;
+			padding-right: 0.1%;
+			padding-left: 0.1%;
+			padding-top: 0.1%;
+			padding-bottom: 0.1%;
+			border-radius: 10px;
+		}
+		#ui{
+			display: none;
+		}
+		#date{
+			top: 3vw;
+			left: 81.5vw;
+			width: 15vw;
+		}
+		#text{
+			top: 4.2vw;
+			left: 81.5vw;
+			width: 15vw;
+		}
+		#logo{
+			top: 2.6vw;
+			left: 95vw;
+			width: 3.5vw;
+			height: 3.5vw;
+		}
+		svg{
+			display: none;
+			top: 2.5vw;
+			left: 81vw;
+			width: 18vw;
+			height: 3.8vw;
+			z-index: -1;
+		}
+		rect{
+			fill:rgb(40,40,40);
+			width: 100%;
+			height: 100%;
+		}
+		.toggle{
+			display: none;
+			height: 3vw;
+			width: 3vw;
+			background-position: center;
+            background-size: 2vw 2vw;
+            background-repeat: no-repeat;
+		}
+		#togglepower	  {top: 9vw; left: 72vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/power.png");}
+		#toggletimeoffest {top: 9vw; left: 76vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/offset.png");}
+		#togglevolume	  {top: 9vw; left: 80vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/volume.png");}
+		#togglebackground {top: 9vw; left: 84vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/background.png");}
+		#togglethirdperson{top: 9vw; left: 88vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/thirdperson.png");}
+		#toggle2minbeeps  {top: 9vw; left: 92vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/2minbeeps.png");}
+		#toggleweapon     {top: 9vw; left: 96vw; background-image: url("https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/weapon.png");}
+
+		#volume{
+			display: none;
+			top: 15vw;
+			left: 76vw;
+			width: 18vw;
+		}
+		#volumeinput{
+			display: none;
+			top: 15vw;
+			left: 94vw;
+			width: 2vw;
+		}
+		#daylightsavingsp{
+			display: none;
+			top: 12vw;
+			left: 76vw;
+			width: 20vw;
+		}
+		#daylightsavings{
+			display: none;
+			top: 15vw;
+			left: 76vw;
+			width: 20vw;
+		}
+		.timezone{
+			display: none;
+			width: 4vw;
+		}
+
+		#UTC{
+			top: 18vw;
+			left: 76vw;
+			width: 20vw;
+		}
+		#Y	   {top: 21vw; left: 76vw;}
+		#X	   {top: 21vw; left: 80vw;}
+		#W	   {top: 21vw; left: 84vw;}
+		#VCross{top: 21vw; left: 88vw;}
+		#V	   {top: 21vw; left: 92vw;}
+		#U	   {top: 24vw; left: 76vw;}
+		#T	   {top: 24vw; left: 80vw;}
+		#S	   {top: 24vw; left: 84vw;}
+		#R	   {top: 24vw; left: 88vw;}
+		#Q	   {top: 24vw; left: 92vw;}
+		#PCross{top: 27vw; left: 76vw;}
+		#P	   {top: 27vw; left: 80vw;}
+		#O	   {top: 27vw; left: 84vw;}
+		#N	   {top: 27vw; left: 88vw;}
+		#Z	   {top: 27vw; left: 92vw;}
+		#A	   {top: 30vw; left: 76vw;}
+		#B	   {top: 30vw; left: 80vw;}
+		#C	   {top: 30vw; left: 84vw;}
+		#CCross{top: 30vw; left: 88vw;}
+		#D 	   {top: 30vw; left: 92vw;}
+		#DCross{top: 33vw; left: 76vw;}
+		#E 	   {top: 33vw; left: 80vw;}
+		#ECross{top: 33vw; left: 84vw;}
+		#EStar {top: 33vw; left: 88vw;}
+		#F 	   {top: 33vw; left: 92vw;}
+		#FCross{top: 36vw; left: 76vw;}
+		#G 	   {top: 36vw; left: 80vw;}
+		#H 	   {top: 36vw; left: 84vw;}
+		#HStar {top: 36vw; left: 88vw;}
+		#I 	   {top: 36vw; left: 92vw;}
+		#ICross{top: 39vw; left: 76vw;}
+		#K 	   {top: 39vw; left: 80vw;}
+		#KCross{top: 39vw; left: 84vw;}
+		#L 	   {top: 39vw; left: 88vw;}
+		#M 	   {top: 39vw; left: 92vw;}
+		#MStar {top: 42vw; left: 76vw;}
+		#MCross{top: 42vw; left: 80vw;}
+		#MCross2{top: 42vw; left: 84vw;}
+	</style>
+</head>
+<body>
+	<div id="ui">
+		<p id="date">2020-01-01 T00:00:00 +0000</p>
+		<p id="text">AXON BODY 3 X60390000</p>
+		<img id="logo" src="https://www.rcpisawesome.co.uk/dev/FiveMRCPAxonCamera/axon.png" alt="Logo">
+		<svg>
+  			<rect/>
+		</svg>
+	</div>
+
+	<button class="toggle" id="togglepower"		 ></button>
+	<button class="toggle" id="toggletimeoffest" ></button>
+	<button class="toggle" id="togglevolume"	 ></button>
+	<button class="toggle" id="togglebackground" ></button>
+	<button class="toggle" id="togglethirdperson"></button>
+	<button class="toggle" id="toggle2minbeeps"  ></button>
+	<button class="toggle" id="toggleweapon"     ></button>
+
+	<input class="volume" id="volume" type="range" min="0" max="100" step="1" value="1"/>
+	<input class="volume" id="volumeinput" type="number" min="0"  max="100"  step="1" value="1" oninput="validity.valid||(value='1');"/>
+
+	<p class="daylightsavings" id="daylightsavingsp">Do You Use Daylight Savings?</p>
+	<select class="daylightsavings" id="daylightsavings"><option selected="selected">YES</option><option>NO</option></select>
+
+	<button class="timezone" id="UTC">Reset to UTC</button>
+
+	<button class="timezone" id="Y" 	  title="-12"  >-1200</button>
+	<button class="timezone" id="X" 	  title="-11"  >-1100</button>
+	<button class="timezone" id="W" 	  title="-10"  >-1000</button>
+	<button class="timezone" id="VCross"  title="-9.5" >-0930</button>
+	<button class="timezone" id="V" 	  title="-9"   >-0900</button>
+	<button class="timezone" id="U" 	  title="-8"   >-0800</button>
+	<button class="timezone" id="T" 	  title="-7"   >-0700</button>
+	<button class="timezone" id="S" 	  title="-6"   >-0600</button>
+	<button class="timezone" id="R" 	  title="-5"   >-0500</button>
+	<button class="timezone" id="Q" 	  title="-4"   >-0400</button>
+	<button class="timezone" id="PCross"  title="-3.5" >-0330</button>
+	<button class="timezone" id="P" 	  title="-3"   >-0300</button>
+	<button class="timezone" id="O" 	  title="-2"   >-0200</button>
+	<button class="timezone" id="N" 	  title="-1"   >-0100</button>
+	<button class="timezone" id="Z" 	  title="0"    >+0000</button>
+	<button class="timezone" id="A" 	  title="1"    >+0100</button>
+	<button class="timezone" id="B" 	  title="2"    >+0200</button>
+	<button class="timezone" id="C" 	  title="3"    >+0300</button>
+	<button class="timezone" id="CCross"  title="3.5"  >+0330</button>
+	<button class="timezone" id="D" 	  title="4"    >+0400</button>
+	<button class="timezone" id="DCross"  title="4.5"  >+0430</button>
+	<button class="timezone" id="E" 	  title="5"    >+0500</button>
+	<button class="timezone" id="ECross"  title="5.5"  >+0530</button>
+	<button class="timezone" id="EStar"   title="5.75" >+0545</button>
+	<button class="timezone" id="F" 	  title="6"    >+0600</button>
+	<button class="timezone" id="FCross"  title="6.5"  >+0630</button>
+	<button class="timezone" id="G"  	  title="7"    >+0700</button>
+	<button class="timezone" id="H" 	  title="8"    >+0800</button>
+	<button class="timezone" id="HStar"   title="8.75" >+0845</button>
+	<button class="timezone" id="I" 	  title="9"    >+0900</button>
+	<button class="timezone" id="ICross"  title="9.5"  >+0930</button>
+	<button class="timezone" id="K" 	  title="10"   >+1000</button>
+	<button class="timezone" id="KCross"  title="10.5" >+1030</button>
+	<button class="timezone" id="L" 	  title="11"   >+1100</button>
+	<button class="timezone" id="M" 	  title="12"   >+1200</button>
+	<button class="timezone" id="MStar"   title="12.75">+1245</button>
+	<button class="timezone" id="MCross"  title="13"   >+1300</button>
+	<button class="timezone" id="MCross2" title="14"   >+1400</button>
+</body>
+</html>
