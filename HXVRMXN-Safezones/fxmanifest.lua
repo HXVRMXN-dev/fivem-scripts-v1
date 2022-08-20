@@ -1,5 +1,5 @@
 author 'HXVRMXN.dev`s Safezones'
-description 'Perfect safezone script which is edited to use OkOkNotify - HXVRMXN#0484 for more scripts'
+description 'HXVRMXN#0484 - Perfect safezone script which is edited to use OkOkNotify - https://github.com/HXVRMXN-dev/fivem-scripts-v1/ for more scripts'
 game 'gta5'
 fx_version 'cerulean'
 
