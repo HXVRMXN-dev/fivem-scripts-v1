@@ -12,7 +12,7 @@ Features
 
   
   
-  - Fivem Bomb Script (Requires: Interact Sound)
+  - Fivem ID Script (Requires: MySQL) Doesn't require a framework like ESX.
   
   
   - Fivem Bodycam Script (Requires: Nothing)
