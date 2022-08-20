@@ -1,7 +1,7 @@
 Config = {}
 --[[
       READ ME!        READ ME !       READ ME!        READ ME !       READ ME!        READ ME !       READ ME!        READ ME !       READ ME!        READ ME ! 
-           If you are using okokNotify make sure the resource/folder is called okokNotify for it to work properly or you can change the name in client.lua
+           If you are using okokNotify make sure the resource/folder of the okokNotify is called okokNotify for it to work properly or you can change the name in client.lua
 ]]
 
 -- Coords for all circular safezones, recommended to put in middle
