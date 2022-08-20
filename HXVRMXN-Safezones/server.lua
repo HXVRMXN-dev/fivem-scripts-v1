@@ -16,7 +16,7 @@ local Time = Config.time
     end 
 -- Don't touch
 resourcename = "HXVRMXN's SafeZones"
-version = "1.0.0"
+version = "1.0.1"
 rawVersionLink = "https://pastebin.com/raw/hqENzbbv"
 
 
