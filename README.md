@@ -20,3 +20,5 @@ Features
 
 ![image](https://user-images.githubusercontent.com/107282158/185765783-7a92a0d0-32cf-458e-91e6-3adeff741847.png)
  
+  - Fivem Ziptie User Script (Requires: Nothing)
+  
