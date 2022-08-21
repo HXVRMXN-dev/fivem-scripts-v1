@@ -15,16 +15,15 @@ end)
 
 
 -- Commands 
-
 RegisterCommand("zip", function(source, args, message)
-    if(config.enable_perms == true) then
-        if IsPlayerAceAllowed(source, config.ace_perm) then
-                TriggerClientEvent("ClientTie", source)
-        end 
-        else 
-            TriggerClientEvent('chatMessage', source, "^1Insufficent Permissions")
-        end
-    end
+     if(config.enable_perms == true) then
+         if IsPlayerAceAllowed(source, config.ace_perm) then
+                 TriggerClientEvent("ClientTie", source)
+         end 
+         else 
+             TriggerClientEvent('chatMessage', source, "^1Insufficent Permissions")
+         end
+      end
 end)
 
 
