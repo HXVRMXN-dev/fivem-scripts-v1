@@ -4,7 +4,7 @@
 RegisterServerEvent("ServerZiptie")
 AddEventHandler("ServerZiptie", function(player)
     TriggerClientEvent('ZipAnimation', source)
-    TriggerClientEvent("ClientZiptie", player)
+    TriggerClientEvent("ClientZip", player)
 end)
 
 RegisterServerEvent("ServerUNZIP")
