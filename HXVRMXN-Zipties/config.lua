@@ -1,5 +1,5 @@
 config = {}
--- Ace Perms toggle
+-- Ace Perms toggle (True only until updated otherwise)
 config.enable_perms = true
 -- Add 'add_ace group.admin ziptie allow' to server.cfg replace group.admin with your ace perms group for LEO or ziptied allowed groups. 
 config.ace_perm = "ziptie"
