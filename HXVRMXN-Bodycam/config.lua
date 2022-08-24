@@ -12,3 +12,17 @@ Configuration.ThirdPersonMid = true -- Turn to false if you want people to not b
 Configuration.ThirdPersonFar = true -- Turn to false if you want people to not be able to activate their bodycam in Far Third Person
 Configuration.ThirdPersonCinematic = true -- Turn to false if you want people to not be able to activate their bodycam in Cinematic Third Person
 
+-- Notify type
+Configuration.Notify = "None" -- Check below for what things to put in "" for your type of notification
+Configuration.Time = "0" -- Time for Notification to display (OkOk Notify, if not using keep to 0)
+
+--[[
+
+OkOk Notify - "OkOk"
+
+Mythic Notify - "Mythic"
+
+K5 Notify - "K5"
+
+Infinity Notify - "Infinity"
+]]
