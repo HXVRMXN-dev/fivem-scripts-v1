@@ -50,6 +50,16 @@ RegisterCommand(Configuration.Command, function()
 	if Configuration.FirstPerson == true and GetFollowPedCamViewMode() == 4 then
 		SendNUIMessage({ShowPowerButton = true})
 		SetNuiFocus(true,true)
+			if Configuration.Notify == "OkOk" then 
+				exports['okokNotify']:Alert('Bodycam', 'Turned on bodycam!', Time, 'success')
+				elseif Configuration.Notify == "Mythic" then
+				    exports['mythic_notify']:DoHudText('success', 'Turned on bodycam!')
+				elseif Configuration.Notify == "Infinity" then
+				 TriggerEvent('infinity-notify:sendNotify', 'Bodycam</br>Turned on bodycam!', 'success')
+				elseif Configuration.Notify == "K5" then
+				 TriggerClientEvent("k5_notify:notify", source, 'Bodycam', 'Turned on bodycam!', 'HXVRMXN`s Bodycam Script')
+				end
+			end
 		elseif GetFollowPedCamViewMode() == 4 then
 		      DrawTextWait()
 	    
@@ -57,6 +67,16 @@ RegisterCommand(Configuration.Command, function()
 		elseif Configuration.ThirdPersonMid == true and GetFollowPedCamViewMode() == 1 then
 		SendNUIMessage({ShowPowerButton = true})
 		SetNuiFocus(true,true)
+			if Configuration.Notify == "OkOk" then 
+				exports['okokNotify']:Alert('Bodycam', 'Turned on bodycam!', Time, 'success')
+				elseif Configuration.Notify == "Mythic" then
+				    exports['mythic_notify']:DoHudText('success', 'Turned on bodycam!')
+				elseif Configuration.Notify == "Infinity" then
+				 TriggerEvent('infinity-notify:sendNotify', 'Bodycam</br>Turned on bodycam!', 'success')
+				elseif Configuration.Notify == "K5" then
+				 TriggerClientEvent("k5_notify:notify", source, 'Bodycam', 'Turned on bodycam!', 'HXVRMXN`s Bodycam Script')
+				end
+			end
 		elseif GetFollowPedCamViewMode() == 1 then
           DrawTextWait()
 	       
@@ -64,12 +84,32 @@ RegisterCommand(Configuration.Command, function()
 		elseif Configuration.ThirdPersonFar == true and GetFollowPedCamViewMode() == 2 then
 		SendNUIMessage({ShowPowerButton = true})
 		SetNuiFocus(true,true)
+			if Configuration.Notify == "OkOk" then 
+				exports['okokNotify']:Alert('Bodycam', 'Turned on bodycam!', Time, 'success')
+				elseif Configuration.Notify == "Mythic" then
+				    exports['mythic_notify']:DoHudText('success', 'Turned on bodycam!')
+				elseif Configuration.Notify == "Infinity" then
+				 TriggerEvent('infinity-notify:sendNotify', 'Bodycam</br>Turned on bodycam!', 'success')
+				elseif Configuration.Notify == "K5" then
+				 TriggerClientEvent("k5_notify:notify", source, 'Bodycam', 'Turned on bodycam!', 'HXVRMXN`s Bodycam Script')
+				end
+			end
 		elseif GetFollowPedCamViewMode() == 2 then
 		 DrawTextWait()	        
 
 		elseif Configuration.ThirdPersonCinematic == true and GetFollowPedCamViewMode() == 3 then
 		SendNUIMessage({ShowPowerButton = true})
 		SetNuiFocus(true,true)
+			if Configuration.Notify == "OkOk" then 
+				exports['okokNotify']:Alert('Bodycam', 'Turned on bodycam!', Time, 'success')
+				elseif Configuration.Notify == "Mythic" then
+				    exports['mythic_notify']:DoHudText('success', 'Turned on bodycam!')
+				elseif Configuration.Notify == "Infinity" then
+				 TriggerEvent('infinity-notify:sendNotify', 'Bodycam</br>Turned on bodycam!', 'success')
+				elseif Configuration.Notify == "K5" then
+				 TriggerClientEvent("k5_notify:notify", source, 'Bodycam', 'Turned on bodycam!', 'HXVRMXN`s Bodycam Script')
+				end
+			end
 		elseif GetFollowPedCamViewMode() == 3 then
 		 DrawTextWait()	    
 	        
@@ -77,6 +117,16 @@ RegisterCommand(Configuration.Command, function()
 		elseif Configuration.ThirdPersonClose == true and GetFollowPedCamViewMode() == 0 then
 		SendNUIMessage({ShowPowerButton = true})
 		SetNuiFocus(true,true)
+			if Configuration.Notify == "OkOk" then 
+				exports['okokNotify']:Alert('Bodycam', 'Turned on bodycam!', Time, 'success')
+				elseif Configuration.Notify == "Mythic" then
+				    exports['mythic_notify']:DoHudText('success', 'Turned on bodycam!')
+				elseif Configuration.Notify == "Infinity" then
+				 TriggerEvent('infinity-notify:sendNotify', 'Bodycam</br>Turned on bodycam!', 'success')
+				elseif Configuration.Notify == "K5" then
+				 TriggerClientEvent("k5_notify:notify", source, 'Bodycam', 'Turned on bodycam!', 'HXVRMXN`s Bodycam Script')
+				end
+			end
 		elseif GetFollowPedCamViewMode() == 0 then
 		 DrawTextWait()	    
 	   
