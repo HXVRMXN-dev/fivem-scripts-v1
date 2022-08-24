@@ -14,7 +14,7 @@ Configuration.ThirdPersonCinematic = true -- Turn to false if you want people to
 
 -- Notify type
 Configuration.Notify = "None" -- Check below for what things to put in "" for your type of notification
-Configuration.Time = "0" -- Time for Notification to display (OkOk Notify, if not using keep to 0)
+Configuration.Time = 6000 -- Time for Notification to display (OkOk Notify, if using do it in mil seconds e.g. 5000 = 5 Seconds, 3000 = 3 Seconds ect)
 
 --[[
 
@@ -25,4 +25,6 @@ Mythic Notify - "Mythic"
 K5 Notify - "K5"
 
 Infinity Notify - "Infinity"
+
+Nothing - "None"
 ]]
