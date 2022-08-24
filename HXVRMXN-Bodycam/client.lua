@@ -2,6 +2,8 @@ cam = true
 allowthird = true
 allowthirdtoggle = true
 b = 0
+local Time = Configuration.Time
+
 CreateThread( function()
 	while true do
 		Wait(0)
