@@ -1,5 +1,5 @@
 author 'HXVRMXN.dev`s Bodycam'
-description 'Perfect bodycam script which is edited to work in all viewmodes with more accessibility - HXVRMXN#0484 for more scripts'
+description 'Perfect bodycam script which is edited to work in all viewmodes with more accessibility - github.com/HXVRMXN-dev/fivem-scripts-v1 for more scripts'
 fx_version 'adamant'
 game 'gta5'
 
