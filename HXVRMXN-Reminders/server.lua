@@ -25,7 +25,21 @@ local AceP = Config.Ace_Perm
 			 TriggerClientEvent("k5_notify:notify", source, Title, Message, 'HXVRMXN`s Reminder', Time)
 			end
         else
-           TriggerClientEvent("chatMessage", source, Title, {255,0,0}, NotPermitted)
+		    if Config.AceRequired == true then
+             TriggerClientEvent("chatMessage", source, Title, {255,0,0}, NotPermitted)
+		    else 
+		     if NotifyType == "Chat" then
+                 TriggerClientEvent("chatMessage", -1, Title .. Message)
+	            elseif NotifyType == "Mythic" then 
+		         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = Message, style = { ['background-color'] = '#ffffff', ['color'] = '#4c4cff' } })
+			    elseif NotifyType == "OkOk" then 
+			     TriggerClientEvent('okokNotify:Alert', source, Title, Message, Time, 'info')
+			    elseif NotifyType == "Infinity" then
+			     TriggerClientEvent('infinity-notify:sendNotify', source, Title .. '</br>' .. Message, 'info')
+			    elseif NotifyType == "K5" then
+			     TriggerClientEvent("k5_notify:notify", source, Title, Message, 'HXVRMXN`s Reminder', Time)
+				end
+			end
         end
     end)
 
@@ -54,11 +68,11 @@ rawVersionLink = "https://pastebin.com/raw/KqKLBtZE"
 
 -- Check for version updates.
 if versionChecker then
-PerformHttpRequest(rawVersionLink, function(errorCode, result, headers)
-    if (string.find(tostring(result), version) == nil) then
-        print("\n\r[".. GetCurrentResourceName() .."] ^1WARNING: Your version of ".. resourcename .." is not up to date. Please make sure to update whenever possible.\n\r")
-    else
-        print("\n\r[".. GetCurrentResourceName() .."] ^2You are running the latest version of ".. resourcename ..".\n\r")
-    end
-end, "GET", "", "")
+    PerformHttpRequest(rawVersionLink, function(errorCode, result, headers)
+      if (string.find(tostring(result), version) == nil) then
+            print("\n\r[".. GetCurrentResourceName() .."] ^1WARNING: Your version of ".. resourcename .." is not up to date. Please make sure to update whenever possible.\n\r")
+        else
+          print("\n\r[".. GetCurrentResourceName() .."] ^2You are running the latest version of ".. resourcename ..".\n\r")
+        end
+    end, "GET", "", "")
 end
