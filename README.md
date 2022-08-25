@@ -1,6 +1,6 @@
 
 A repository for all of my public fivem scripts of 2022.
-
+Download seperately using downgit
 
 Features  
   
