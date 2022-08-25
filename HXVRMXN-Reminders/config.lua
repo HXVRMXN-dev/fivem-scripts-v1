@@ -2,6 +2,7 @@ Config = {}
 
 Config.Command = "reminder" -- Command to create a manual reminder
 Config.Ace_Perm = "HXVRMXN.Reminder" -- Ace perm required to create manual reminders
+Config.AceRequired = true
 Config.Time = 15000 -- Time reminder is displayed for in millseconds.
 Config.Prefix = "^7[^4HXVRMXN's Reminder^7] " -- Puts this as notify title
 Config.No_Permissions = " ^4Insufficent Permissions - Need ace permission"
