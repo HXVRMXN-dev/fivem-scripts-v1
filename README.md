@@ -31,6 +31,6 @@ Features
 
 - Fivem Ziptie User Script (Requires: Nothing)
 
-  
+- Fivem Server-wide manual and automatic reminders.  
 
 Contact me on discord HXVRMXN#0484 if you want custom services.
