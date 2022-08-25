@@ -33,7 +33,4 @@ Features
 
   
 
-Contact me on discord HXVRMXN#0484 if you want your services advertised here.
-![image](https://user-images.githubusercontent.com/107282158/186304234-c168066e-f124-4ffa-90f0-798d63329589.png)
-
-I am not responsible for any of these services or ads displayed, these may lead to a place which I have no power over or control so it is your fault if you use this ad's services.
+Contact me on discord HXVRMXN#0484 if you want custom services.
