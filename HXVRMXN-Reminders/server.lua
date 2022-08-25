@@ -21,7 +21,7 @@ local AceP = Config.Ace_Perm
 			 TriggerClientEvent('okokNotify:Alert', source, Title, Message, Time, 'info')
 			elseif NotifyType == "Infinity" then
 			 TriggerClientEvent('infinity-notify:sendNotify', source, Title .. '</br>' .. Message, 'info')
-			elseif 
+			elseif NotifyType == "K5" then
 			 TriggerClientEvent("k5_notify:notify", source, Title, Message, 'HXVRMXN`s Reminder', Time)
 			end
         else
