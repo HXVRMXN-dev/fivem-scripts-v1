@@ -31,6 +31,6 @@ Features
 
 - Fivem Ziptie User Script (Requires: Nothing)
 
-- Fivem Server-wide manual and automatic reminders.  
+- Fivem Server-wide manual and automatic reminders.  (Requires: okokNotify, mythic notify, K5 Notify, Infinity notify or chat)
 
 Contact me on discord HXVRMXN#0484 if you want custom services.
