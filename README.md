@@ -5,7 +5,8 @@ Download seperately using downgit https://minhaskamal.github.io/DownGit/#/home o
 Features  
   
   - Fivem Safezones Script (Requires: okokNotify)
- https://github.com/HXVRMXN-dev/HXVRMXN-Safezones
+    https://github.com/HXVRMXN-dev/HXVRMXN-Safezones
+ 
   https://user-images.githubusercontent.com/107282158/185766438-491e13d9-d0f1-40fa-80ea-082760a1c4e1.png
 
 
