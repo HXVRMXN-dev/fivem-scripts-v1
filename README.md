@@ -29,7 +29,7 @@ Features
 
 
 
-- Fivem Ziptie User Script (Requires: Nothing)
+- Fivem Realistic Ragdoll On Shot Script (Requires: Nothing)
 
 - Fivem Server-wide manual and automatic reminders.  (Requires: okokNotify, mythic notify, K5 Notify, Infinity notify or chat)
 
