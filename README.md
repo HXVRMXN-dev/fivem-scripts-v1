@@ -31,7 +31,9 @@ https://github.com/HXVRMXN-dev/HXVRMXN-Bodycam
 
 
 - Fivem Realistic Ragdoll On Shot Script (Requires: Nothing)
-
+  https://github.com/HXVRMXN-dev/HXVRMXN-RealismParalyse
+  
+  
 - Fivem Server-wide manual and automatic reminders.  (Requires: okokNotify, mythic notify, K5 Notify, Infinity notify or chat)
   https://github.com/HXVRMXN-dev/HXVRMXN-Reminders
 
