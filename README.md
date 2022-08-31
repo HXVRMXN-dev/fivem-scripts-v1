@@ -1,6 +1,6 @@
 
 A repository for all of my public fivem scripts of 2022.
-Download seperately using downgit https://minhaskamal.github.io/DownGit/#/home
+Download seperately using downgit https://minhaskamal.github.io/DownGit/#/home or use the link next to the name of resource below.
 
 Features  
   
