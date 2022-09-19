@@ -3,7 +3,8 @@ description 'HXVRMXN#0484 - Perfect safezone script which is edited to use OkOkN
 game 'gta5'
 fx_version 'cerulean'
 
+shared_script 'config.lua'
 client_script 'client.lua'
 server_script 'server.lua'
-shared_script 'config.lua'
+
 
