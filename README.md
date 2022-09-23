@@ -13,7 +13,7 @@ Features
   https://user-images.githubusercontent.com/107282158/185766415-204e7cd9-888f-4b0d-949c-89c6479b2a46.png
 
   
-  
+  - FiveM County Medical Script (Requires: Nothing)
  
  
  - Fivem ID Script (Requires: MySQL) Doesn't require a framework like ESX.
