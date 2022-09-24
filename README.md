@@ -1,3 +1,6 @@
+Banned from using my scripts or reselling/reuploading them:
+https://media.discordapp.net/attachments/1021554734844362752/1023250133367922722/Screenshot_2022-09-24_151029.png
+FivemDesigns made by Monster
 
 A repository for all of my public fivem scripts of 2022.
 Download seperately using the link next to the name of resource below or downgit.
