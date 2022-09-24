@@ -1,6 +1,11 @@
-Banned from using my scripts or reselling/reuploading them:
+FiveMDesigns Banned from using my scripts or reselling/reuploading them:
 https://media.discordapp.net/attachments/1021554734844362752/1023250133367922722/Screenshot_2022-09-24_151029.png
 FivemDesigns made by Monster
+
+
+River Modifications Permitted to use my scripts in reselling or reuploading as long given credit including my discord and github:
+https://cdn.discordapp.com/icons/1021514724019548241/3d457f6c6c34177bc133e9858cd4f076.webp?
+River Modifications made by Terry
 
 A repository for all of my public fivem scripts of 2022.
 Download seperately using the link next to the name of resource below or downgit.
