@@ -1,5 +1,6 @@
 A repository for all of my public fivem scripts of 2022.
 Download seperately using the link next to the name of resource below or downgit.
+Make sure to READ THE LICENSE
 
 Features  
   
@@ -31,12 +32,12 @@ https://github.com/HXVRMXN-dev/HXVRMXN-Bodycam
 
 - Fivem Realistic Ragdoll On Shot Script (Requires: Nothing)
   https://github.com/HXVRMXN-dev/HXVRMXN-RealismParalyse
-  
-  
-https://media.discordapp.net/attachments/1021554734844362752/1023250133367922722/Screenshot_2022-09-24_151029.png
-FivemDesigns made by Monster
 
 - Fivem Server-wide manual and automatic reminders.  (Requires: okokNotify, mythic notify, K5 Notify, Infinity notify or chat)
   https://github.com/HXVRMXN-dev/HXVRMXN-Reminders
 
 Contact me on discord HXVRMXN#0484 if you want custom services.
+
+
+https://media.discordapp.net/attachments/1021554734844362752/1023250133367922722/Screenshot_2022-09-24_151029.png
+FivemDesigns made by Monster
