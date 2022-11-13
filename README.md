@@ -33,7 +33,8 @@ https://github.com/HXVRMXN-dev/HXVRMXN-Bodycam
 
 - Fivem Realistic Ragdoll On Shot Script (Requires: Nothing)
   https://github.com/HXVRMXN-dev/HXVRMXN-RealismParalyse
-      - Request from some moron who cant read READ-ME this is an edited version of Scots ragdollonshot script. 
+       - Request from some moron who cant read READ-ME this is an edited version of Scots ragdollonshot script.
+       
 - Fivem Server-wide manual and automatic reminders.  (Requires: okokNotify, mythic notify, K5 Notify, Infinity notify or chat)
   https://github.com/HXVRMXN-dev/HXVRMXN-Reminders
 
